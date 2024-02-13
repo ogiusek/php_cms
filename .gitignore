@@ -1,0 +1,6 @@
+/tests
+/env.php
+/.vscode
+/.sass-cache
+
+*.cache*
