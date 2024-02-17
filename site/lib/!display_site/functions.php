@@ -1,12 +1,5 @@
 <?php
   namespace display_site;
-  function replace_app_with_app_content($html, $app_content) {
-    $div_id_regex = "/<div id=\"app\">(.*?)<\/div>/s";
-    if (preg_match($div_id_regex, $html, $div)) {
-      $html = str_replace($div[0], $app_content, $html);
-    }
-    return $html;
-  }
 
   function get_and_remove_all_tags($tag, $html){
     $regex = "/<{$tag}>(.*?)<\/{$tag}>/s";
@@ -39,4 +32,29 @@
       $html = $action($html);
     }
     return $html;
+  }
+
+  $pages_dir = getcwd().'/site/pages';
+
+  $routes = scandir($pages_dir);
+  $routes = array_diff($routes, array('.', '..'));
+
+  $routes = array_reduce($routes, function ($carry, $file) use ($pages_dir) {
+      $key = "/$file";
+      $value = "$pages_dir/$file/$file.php";
+      $carry[$key] = $value;
+      return $carry;
+    }, []);
+  $routes['/'] = $routes['/start'];
+
+  if (!isset($routes[$_SERVER['REQUEST_URI']])){
+    header("Location: /");
+    exit();
+  }
+  
+  function display_page() {
+    global $routes;
+    ob_start();
+    require $routes[$_SERVER['REQUEST_URI']];
+    return ob_get_clean();
   }

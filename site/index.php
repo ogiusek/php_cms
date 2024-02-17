@@ -33,7 +33,7 @@
 </head>
 
 <body>
-  <div id="app">App is not working</div>
+  <?= display_site\display_page() ?>
 </body>
 
 </html>
