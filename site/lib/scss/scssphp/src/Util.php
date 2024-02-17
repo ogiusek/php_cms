@@ -240,7 +240,7 @@ final class Util
     /**
      * mb_strpos wrapper
      */
-    public static function mbStrpos(string $haystack, string $needle, int $offset = 0): int|false
+    public static function mbStrpos(string $haystack, string $needle, int $offset = 0)
     {
         if (\function_exists('mb_strpos')) {
             return mb_strpos($haystack, $needle, $offset, 'UTF-8');
