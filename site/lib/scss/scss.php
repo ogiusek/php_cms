@@ -2,14 +2,17 @@
 require_once "scssphp/scss.inc.php"; // use new ScssPhp\ScssPhp\Compiler(); .compileString('')->getCss();
 require_once "classes.php";
 
-define("scss_compiler", new ScssPhp\ScssPhp\Compiler());
+$scss_compiler = new ScssPhp\ScssPhp\Compiler();
+
 function compileScss($scss) {
-  return scss_compiler->compileString($scss)->getCss();
+  global $scss_compiler;
+  $css = $scss_compiler->compileString($scss)->getCss();
+  return $css;
 }
 
 function getWrappedScss($scss, $component_unique_class, $global_style = "") {
   $component_class = getComponentClass();
-  $wrapped_scss = "$global_style .$component_unique_class :not(.$component_class), .$component_unique_class> { $scss }";
+  $wrapped_scss = "$global_style \n .$component_unique_class :not(.$component_class), .$component_unique_class> { $scss }";
   return $wrapped_scss;
 }
 
