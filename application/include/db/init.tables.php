@@ -26,7 +26,8 @@ $tables = [
 $default_rows = [
   "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/', 'start/start.php', 10)",
   "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin', 'admin/admin.php', 0)",
-  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin/$', 'admin/admin.php', 0)",
+  // "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin/$', 'admin/admin.php', 0)",
+  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin/.*', 'admin/admin.php', 0)",
 ];
 
 try{
