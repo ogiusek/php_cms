@@ -8,6 +8,12 @@ function select(string $query, array $params = []) {
 }
 
 function insert(string $query, array $params = []) {
-  $stmt = $GLOBALS["db"]->prepare($query);
-  $stmt->execute($params);
+  $success = true;
+  try{
+    $stmt = $GLOBALS["db"]->prepare($query);
+    $stmt->execute($params);
+  } catch(\Exception $e) {
+    $success = false;
+  }
+  return $success;
 }
