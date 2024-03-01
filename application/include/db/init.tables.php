@@ -17,7 +17,8 @@ $tables = [
   )",
 
   "CREATE TABLE IF NOT EXISTS `pages` (
-    `page` VARCHAR(255) PRIMARY KEY,
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `page` VARCHAR(255) UNIQUE NOT NULL,
     `file` VARCHAR(255) NOT NULL,
     `order` SMALLINT DEFAULT 0
   )",
