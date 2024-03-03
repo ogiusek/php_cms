@@ -22,6 +22,19 @@ $tables = [
     `file` VARCHAR(255) NOT NULL,
     `order` SMALLINT DEFAULT 0
   )",
+  "CREATE TABLE IF NOT EXISTS `pages_content` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `page_id` INT NOT NULL,
+    `content` TEXT NOT NULL,
+    `order` INT UNSIGNED DEFAULT 0
+  )",
+
+  "CREATE TABLE IF NOT EXISTS `components` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `renderer` VARCHAR(255) NOT NULL,
+    `admin_renderer` VARCHAR(255) NOT NULL,
+    `class_name` VARCHAR(255) NOT NULL
+  )"
 ];
 
 $default_rows = [

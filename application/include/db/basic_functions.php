@@ -7,7 +7,7 @@ function select(string $query, array $params = []) {
   return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function insert(string $query, array $params = []) {
+function modify(string $query, array $params = []) {
   $success = true;
   try{
     $stmt = $GLOBALS["db"]->prepare($query);
