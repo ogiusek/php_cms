@@ -31,9 +31,7 @@ $tables = [
 
   "CREATE TABLE IF NOT EXISTS `components` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `renderer` VARCHAR(255) NOT NULL,
-    `admin_renderer` VARCHAR(255) NOT NULL,
-    `class_name` VARCHAR(255) NOT NULL
+    `class_name` VARCHAR(255) UNIQUE NOT NULL
   )"
 ];
 
@@ -55,5 +53,5 @@ try{
     $db->query($row_query);
   }
 } catch (Exception $e) {
-  echo "Disable LOAD_DEFAULT_DATABASE_CONFIG in .env";
+  // echo "Disable LOAD_DEFAULT_DATABASE_CONFIG in .env";
 }

@@ -13,6 +13,7 @@ function modify(string $query, array $params = []) {
     $stmt = $GLOBALS["db"]->prepare($query);
     $stmt->execute($params);
   } catch(\Exception $e) {
+    // echo $e->getMessage();
     $success = false;
   }
   return $success;
