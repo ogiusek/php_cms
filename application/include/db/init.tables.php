@@ -36,10 +36,10 @@ $tables = [
 ];
 
 $default_rows = [
-  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/', 'menager.php', 10)",
-  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin', 'admin/admin.php', 0)",
+  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/', 'menager.php', 0)",
+  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin', 'admin/admin.php', -1)",
   // "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin/$', 'admin/admin.php', 0)",
-  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin/.*', 'admin/admin.php', 0)",
+  "INSERT INTO `pages` (`page`, `file`, `order`) VALUES ('/admin/.*', 'admin/admin.php', -2)",
 ];
 
 try{
