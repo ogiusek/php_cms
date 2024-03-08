@@ -1,0 +1,15 @@
+.error{
+  color: var(--color-error)!important;
+}
+
+.remove{
+  border-color: var(--color-error)!important;
+}
+
+.success{
+  color: var(--color-success)!important;
+}
+
+.add{
+  border-color: var(--color-success)!important;
+}

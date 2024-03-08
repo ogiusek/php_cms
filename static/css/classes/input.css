@@ -1,0 +1,104 @@
+/* input */
+.input {
+  padding: 0.5rem;
+  max-width: 100%;
+  width: 25rem;
+  min-height: 2rem;
+  box-sizing: content-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input > input,
+.input > button,
+.input > select {
+  min-height: 2rem;
+  box-sizing: border-box;
+  margin: 0;
+
+  transition: var(--transition);
+  font-size: 1rem;
+  font-weight: 600;
+  
+  border-radius: 5px;
+  height: 100%;
+  border: 1px solid var(--color-btn-primary);
+  background-color: var(--color-btn-primary);
+  color: var(--color-text-primary);
+
+  -webkit-box-shadow: 0px 0px 1rem 0px var(--color-shadow-primary);
+  -moz-box-shadow:    0px 0px 1rem 0px var(--color-shadow-primary);
+  box-shadow:         0px 0px 1rem 0px var(--color-shadow-primary);
+}
+
+.input > label {
+  font-size: 1rem;
+  height: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-right: auto;
+}
+
+.input > input {
+  width: 100%;
+  padding: 0.5rem;
+  outline-width: 1px;
+  outline-style: solid;
+}
+
+.input > input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.input > input[type='number']::-webkit-outer-spin-button,
+.input > input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input > input:valid {
+  outline-color: var(--color-success);
+}
+.input > input:invalid {
+  outline-color: var(--color-warning);
+}
+.input > input.invalid {
+  outline-color: var(--color-error);
+}
+
+
+/* button */
+.input > button {
+  padding: 0 2rem;
+  text-align: center;
+  outline: none;
+  transition: var(--transition);
+}
+
+@media screen and (max-width: 576px) {
+  .input > button {
+    padding: 0 1rem;
+  }
+}
+
+.input > button:hover {
+  filter: brightness(1.1);
+}
+
+form:invalid .input > button[type="submit"] {
+  outline: 1px solid var(--color-warning);
+}
+form:valid .input > button[type="submit"] {
+  outline: 1px solid var(--color-success);
+}
+
+/* select */
+.input > select {
+  outline: 1px solid var(--color-success);
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}

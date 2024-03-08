@@ -1,0 +1,70 @@
+.notifications{
+  max-height: 400px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  gap: 1rem;
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+}
+
+.notification{
+  --width: 15rem;
+  width: var(--width);
+  
+  padding: 1rem 0.5rem;
+  margin-left: auto;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border-primary);
+  user-select: none;
+
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  font-weight: 500;
+
+  -webkit-box-shadow: 0px 0px 5rem 0px var(--color-shadow-primary);
+  -moz-box-shadow:    0px 0px 5rem 0px var(--color-shadow-primary);
+  box-shadow:         0px 0px 5rem 0px var(--color-shadow-primary);
+
+  animation: notification_append var(--transition) forwards;
+}
+
+@keyframes notification_append {
+  0%{
+    margin-right: calc(0px - var(--width) * 2);
+    opacity: 0;
+  }
+
+  92.5%, 95%{
+    margin-right: 0.5rem;
+  }
+
+  100%{
+    margin-right: 0;
+  }
+}
+
+.notification.remove{
+  animation: notification_remove var(--transition) forwards;
+}
+
+@keyframes notification_remove {
+  0%{
+   margin-right: 0rem;
+  }
+
+  5%, 7.5%{
+    margin-right: 0.5rem;
+  }
+  
+  100%{
+    opacity: 0;
+    margin-right: calc(0px - var(--width) * 2);
+  }
+}
