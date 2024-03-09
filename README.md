@@ -21,6 +21,7 @@ create 4 files inside `class.php`, `render.php`, `admin/render.php`, `admin/hand
 `class.php`
 ```php
 <?php
+namespace components;
 class $component_name{
    public string $example_variable = "default value";
 };
@@ -48,8 +49,9 @@ $content = \components()->get_content();
 `admin/handler.php`
 ```php
 <?php
-$component = new $component_name();
-$component->example_variable = $_POST['input_name'];
+$content = \components()->get_content();
+$component = \components()->get_instance("$component_name");
+$component->example_variable = $content['input_name'];
 echo serialize($component);
 ```
 
