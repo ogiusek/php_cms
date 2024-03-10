@@ -13,6 +13,10 @@ PHP CMS is a lightweight, easy-to-use content management system built with PHP. 
 - I hope you will be able to act on your own from now on
 - (: good luck
 
+## Example site
+- php.test.simplecreator.pl
+- to edit content use this account this email `try@gmail.com` and password `password` 
+
 ## Components
 ### how add component step by step
 create directory `/include/components/$component_name`\
