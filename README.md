@@ -42,7 +42,7 @@ $content = \components()->get_content();
 ?>
 <div class="input">
    <label for="input_name">example_variable value</label>
-   <input type="text" name="input_name" value="<?=$content->example_variable?>">
+   <input type="text" data-name="input_name" aria-label="input_name" value="<?=$content->example_variable?>">
 </div>
 ```
 
@@ -68,9 +68,13 @@ Your element should show up.
 - Simple and intuitive user interface
 - Content editing and publishing
 - Image and file management
-- User management and permissions
 - Responsive design
 - SEO-friendly URLs
+
+## Tools
+### Url variables
+To create variable url you can type `$` like this `/page/$id/edit` \
+optionaly you can use `/page/.*` to redirect all request starting with page to one component
 
 ## Support
 For any issues or feedback, please submit an issue on the GitHub repository or contact us on github
