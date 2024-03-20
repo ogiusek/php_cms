@@ -9,16 +9,16 @@ function handle_fetch(response){
   });
 }
 
-function fetch_function(url, func){
+function fetch_function(url, func, args = {}){
   return new Promise((resolve, reject)=>
-    fetch(url)
+    fetch(url, args)
       .then(handle_fetch)
       .then((data) => resolve(func(data)))
       .catch((error) => reject(notify(error, 'error')))
   );
 }
 
-function fetch_format(url){
+function fetch_format(url, args){
   const element = document.createElement('div');
   return fetch_function(url, (content)=>{
     element.innerHTML += content;
@@ -36,17 +36,21 @@ function fetch_format(url){
     move_to_head('script');
     move_to_head('style');
     return element.innerHTML;
-  });
+  }, args);
 }
 
 function fetch_append(url, element){
   return fetch_format(url).then(content => element.insertAdjacentHTML('beforeend', content));
 }
 
-function fetch_replace(url, element){
+function fetch_replace(url, element, additional){
   return fetch_format(url).then(content => {
     const assign_element = (element)=>{
-      element.innerHTML = content;
+      if(additional === 'innerHTML'){
+        element.innerHTML = content;
+      }else{
+        element.outerHTML = content;
+      }
     }
     if(!Array.isArray(element)){
       assign_element(element);
