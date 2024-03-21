@@ -61,6 +61,7 @@ function fetch_replace(url, element, additional){
 }
 
 function get_form_data(element){
+  const empty_array_regex = /.*\[\].*/;
   const array_regex = /.*\[.*\].*/;
   const attr_name = "data-name";
   const ready_data = {};
@@ -69,8 +70,13 @@ function get_form_data(element){
   const elements = [...element.querySelectorAll(`[${attr_name}]`)];
   const elements_filtered = elements.filter(e => !elements_to_diff.includes(e));
   elements_filtered.map(e => {
-    const name = e.getAttribute(attr_name);
-    const to_add = e.value?? get_form_data(e);
+    const attr = e.getAttribute(attr_name);
+    const has_extra_name = !empty_array_regex.test(attr) && array_regex.test(attr)
+    const extra_name = !has_extra_name ? null : attr.slice(attr.indexOf('[') + 1, attr.indexOf(']'));
+    const name = !has_extra_name ? attr : attr.slice(0, attr.indexOf('[')) + '[]';
+
+    const data = e.value?? get_form_data(e);
+    const to_add = has_extra_name ? {[extra_name]: data} : data;
     const is_array = array_regex.test(name);
     if(is_array){
       ready_data[name] ??= [];
