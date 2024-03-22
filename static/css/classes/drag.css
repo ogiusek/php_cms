@@ -1,0 +1,8 @@
+.placeholder {
+  opacity: 0;
+}
+
+.draggable.dragging:not(.placeholder) {
+  position: fixed;
+  opacity: .8;
+}
