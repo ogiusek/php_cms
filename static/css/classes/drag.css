@@ -3,6 +3,6 @@
 }
 
 .draggable.dragging:not(.placeholder) {
-  position: fixed;
+  position: fixed!important;
   opacity: .8;
 }

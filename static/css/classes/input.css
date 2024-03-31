@@ -13,6 +13,7 @@
 }
 
 .input > input,
+.input > a,
 .input > button,
 .input > select {
   min-height: 2rem;
@@ -35,6 +36,7 @@
 }
 
 .input > label {
+  z-index: 1;
   font-size: 1rem;
   height: 1.5rem;
   font-weight: 600;
@@ -59,6 +61,30 @@
   margin: 0;
 }
 
+.input:has(input[type="checkbox"]){
+  flex-direction: row;
+}
+
+.input > input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  box-sizing: border-box;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+  
+  outline: none;
+  border: none;
+  background-color: var(--color-error);
+}
+.input > input[type="checkbox"]:checked {
+  background-color: var(--color-success);
+}
+
 .input > input:valid {
   outline-color: var(--color-success);
 }
@@ -71,6 +97,7 @@
 
 
 /* button */
+.input > a,
 .input > button {
   padding: 0 2rem;
   text-align: center;
@@ -83,14 +110,17 @@
   position: relative;
 }
 
+.input > a:has(img),
 .input > button:has(img) {
   padding: 0.25rem;
 }
 
+.input > a > img,
 .input > button > img {
   height: 1rem;
 }
 
+.input > a[data-alt]:hover::after,
 .input > button[data-alt]:hover::after {
   content: attr(data-alt);
   position: absolute;
@@ -107,11 +137,13 @@
 }
 
 @media screen and (max-width: 576px) {
+  .input > a,
   .input > button {
     padding: 0 1rem;
   }
 }
 
+.input > a:hover,
 .input > button:hover {
   filter: brightness(1.1);
 }
