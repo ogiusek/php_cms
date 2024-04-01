@@ -36,5 +36,3 @@ function notify(message, type = "error") {
 function show_tadam(data) {
   console.log('not yet implemented tadam: ', data);
 }
-
-// export { notify, show_tadam };

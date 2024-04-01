@@ -45,6 +45,7 @@ function drag_on_mouse_up() {
   const container = draggable.parentElement;
   const placeholder = container.querySelector('.placeholder');
   draggable.classList.remove('dragging');
+  draggable.style = "";
 
   placeholder.replaceWith(draggable);
   const on_drag_end_function = draggable.getAttribute('ondragend');
@@ -76,7 +77,13 @@ function load_drag_container(container) {
   draggables.map(draggable => load_drag_element(draggable));
 }
 
+/**
+ * @param {HTMLElement} element 
+ */
 function drag_once(element) {
+  const select_draggable = (e) => e.classList.contains("draggable") ? e : select_draggable(e.parentElement);
+  element = select_draggable(element);
+
   setTimeout(() => {
     const container = element.parentElement;
     load_drag_container(container);
