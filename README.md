@@ -64,6 +64,35 @@ Choose your page (i'll take '/'). Click button `content`. Add your element.\
 Now you can go to page ('/') to which you've added content.\
 Your element should show up. 
 
+### extra
+
+#### components api requests
+if you need to request server after rendering component you can use `/controller`\
+How create example api and use ?
+
+`/controllers/example_route/controller.php`
+```php
+<?php
+\request\verify()
+   ->required_params(["a", "b"]);
+
+$a = $_POST['a'];
+$b = $_POST['b'];
+if(is_numeric($a) && is_numeric($b)){
+   echo (((float)$a) + ((float)$b));
+}else{
+   echo "a or b is not number";
+}
+```
+
+`/script.js` (remember to include script in `renderer.php` with `\component(__DIR__)->js_file("script.js")`)
+```js
+fetch_controller("component_name", "example_route", {
+   a: 1,
+   b: 2
+}).then(notify);
+```
+
 ## Features
 - Simple and intuitive user interface
 - Content editing and publishing
