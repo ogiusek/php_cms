@@ -52,7 +52,7 @@ $content = \components()->get_content();
 $content = \components()->get_content();
 $component = \components()->get_instance("$component_name");
 $component->example_variable = $content['input_name'];
-echo serialize($component);
+return $component;
 ```
 
 To show component in admin go to `/admin/frontend/components`\
