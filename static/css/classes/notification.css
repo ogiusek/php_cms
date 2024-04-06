@@ -22,7 +22,7 @@
   padding: 1rem 0.5rem;
   margin-left: auto;
   border-radius: 0.5rem;
-  border: 1px solid var(--color-border-primary);
+  /* border: 1px solid var(--color-border-primary); */
   user-select: none;
 
   color: rgba(0, 0, 0, 0.6);

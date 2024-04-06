@@ -85,6 +85,23 @@
   background-color: var(--color-success);
 }
 
+.input > input[type="color"] {
+  padding: 0;
+  height: 2rem;
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}
+
+.input > input[type="color"]::-webkit-color-swatch,
+.input > input[type="color"]::-moz-color-swatch,
+.input > input[type="color"]::-webkit-color-swatch-wrapper,
+.input > input[type="color"]::-moz-color-swatch-wrapper {
+  border: none;
+  height: 100px;
+  width: 100px;
+}
+
 .input > input:valid {
   outline-color: var(--color-success);
 }
@@ -122,6 +139,8 @@
 
 .input > a[data-alt]:hover::after,
 .input > button[data-alt]:hover::after {
+  z-index: 2;
+  
   content: attr(data-alt);
   position: absolute;
   bottom: 0;
