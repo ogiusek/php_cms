@@ -6,11 +6,13 @@
 function handle_fetch(response){
   return new Promise(async (resolve, reject)=>{
     const text = await response.text();
-    // console.log(text);
-    const json = JSON.parse(text);
-    // const json = await response.json();
-    if(json['error']) return reject(json['content']);
-    resolve(json['content']);
+    try{
+      const json = JSON.parse(text);
+      if(json['error']) return reject(json['content']);
+      return resolve(json['content']);
+    }catch(e){
+      return reject(text);
+    }
   });
 }
 
