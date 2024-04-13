@@ -14,7 +14,7 @@ function select_parent_component(element){
  * @returns {HTMLElement}
  */
 function select_parent_with_attr(element, attr){
-  return select_panrent_where(element, (e) => e.hasAttribute(attr));
+  return select_parent_where(element, (e) => e.hasAttribute(attr));
   // const selectParent = (e) => e.hasAttribute(attr) ? e : selectParent(e.parentElement);
   // return selectParent(element);
 }
@@ -24,9 +24,9 @@ function select_parent_with_attr(element, attr){
  * @param {(HTMLElement) => boolean} filter_func 
  * @returns {HTMLElement}
  */
-function select_panrent_where(element, filter_func){
+function select_parent_where(element, filter_func){
   if(!element) return;
   return filter_func(element) ? 
             element :
-            select_panrent_where(element.parentElement, filter_func);
+            select_parent_where(element.parentElement, filter_func);
 }
