@@ -12,6 +12,7 @@
   flex-direction: column;
 }
 
+.input > textarea,
 .input > input,
 .input > a,
 .input > button,
@@ -44,6 +45,7 @@
   margin-right: auto;
 }
 
+.input > textarea,
 .input > input {
   width: 100%;
   padding: 0.5rem;
@@ -102,16 +104,22 @@
   width: 100px;
 }
 
+.input > textarea:valid,
 .input > input:valid {
   outline-color: var(--color-success);
 }
+.input > textarea:invalid,
 .input > input:invalid {
   outline-color: var(--color-warning);
 }
+.input > textarea.invalid,
 .input > input.invalid {
   outline-color: var(--color-error);
 }
 
+.input > textarea{
+  resize: none;
+}
 
 /* button */
 .input > a,
