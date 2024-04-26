@@ -27,7 +27,13 @@ function fetch_handle(url, args = {}){
     fetch(url, args)
       .then(handle_fetch)
       .then((data) => resolve(data))
-      .catch((error) => reject(notify(error, 'error')))
+      .catch((error) => {
+        if(error === "Session token is missing")
+          return window.location.reload();
+
+        notify(error, 'error');
+        reject(error);
+    })
   );
 }
 
