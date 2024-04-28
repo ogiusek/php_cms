@@ -145,18 +145,25 @@
   height: 1rem;
 }
 
+.input > a[data-alt]:hover,
+.input > button[data-alt]:hover{
+  z-index: 2;
+}
+
 .input > a[data-alt]:hover::after,
 .input > button[data-alt]:hover::after {
   z-index: 2;
-  
+
   content: attr(data-alt);
   position: absolute;
   bottom: 0;
   left: 0;
   transform: translateY(100%);
+
   font-size: 1rem;
   font-weight: 400;
   color: var(--color-text-primary);
+  
   background-color: var(--color-bg-primary);
   padding: 0.25rem;
   border-radius: 0.25rem;
