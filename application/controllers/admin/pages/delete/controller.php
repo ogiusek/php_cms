@@ -7,7 +7,7 @@
 if(!\db\pages\delete($_POST['id'])){
   \request\response()
     ->setStatus(400)
-    ->setContent("page already exists")
+    ->setContent("page do not exists")
     ->send();
 }
 

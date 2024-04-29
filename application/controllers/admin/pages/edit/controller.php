@@ -12,5 +12,8 @@ if(!\db\pages\update($_POST['id'], $_POST['page'], $_POST['file'], $_POST['order
 }
 
 \request\response()
-  ->setContent("success")
+  ->setContent([
+    "message" => "success",
+    "new_link" => format_link($_POST['page'])
+  ])
   ->send();
