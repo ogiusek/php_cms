@@ -7,6 +7,11 @@ $route = $route[-1] == '/' && strlen($route) > 1 ? substr($route, 0, -1) : $rout
 
 // get routes
 $routes = \db\pages\get();
+// format routes
+$routes = array_map(function ($route) {
+  $route['page'] = \format_link($route['page']);
+  return $route;
+}, $routes);
 
 // add to file $pages_dir
 $pages_directory = dirname(__DIR__, 2).'/pages';
