@@ -1,7 +1,7 @@
 <?php
 \request\verify()
   ->require_session_token()
-  ->allowed_methods("PATCH")
+  ->allowed_methods("POST")
   ->require_params(["id", "name", "colors"]);
 
 if(!\db\colors\edit($_POST['id'], $_POST['name'], $_POST['colors'])){

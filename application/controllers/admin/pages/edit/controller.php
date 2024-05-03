@@ -1,7 +1,7 @@
 <?php
 \request\verify()
   ->require_session_token()
-  ->allowed_methods(["PATCH"])
+  ->allowed_methods(["POST"])
   ->require_params(["id", "page", "file", "order"]);
 
 if(!\db\pages\update($_POST['id'], $_POST['page'], $_POST['file'], $_POST['order'])){

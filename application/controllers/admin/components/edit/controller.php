@@ -1,7 +1,7 @@
 <?php
 \request\verify()
   ->require_session_token()
-  ->allowed_methods(["PATCH"])
+  ->allowed_methods(["POST"])
   ->require_params(["id", "class_name"]);
 
 if(!\db\components\edit($_POST["id"], $_POST["class_name"])) {

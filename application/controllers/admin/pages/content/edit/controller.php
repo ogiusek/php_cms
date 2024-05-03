@@ -1,6 +1,6 @@
 <?php
 \request\verify()
-  ->allowed_methods(["PATCH"])
+  ->allowed_methods(["POST"])
   ->require_url_params(["id"]);
 
 $content = \db\pages\content\get_by_id($_GET["id"])[0]["content"];

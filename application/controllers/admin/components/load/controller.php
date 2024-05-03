@@ -1,7 +1,7 @@
 <?php
 \request\verify()
   ->require_session_token()
-  ->allowed_methods(["PATCH"]);
+  ->allowed_methods(["POST"]);
 
 \db\components\autoload();
 

@@ -1,6 +1,6 @@
 <?php
 \request\verify()
-  ->allowed_methods(["PATCH"])
+  ->allowed_methods(["POST"])
   ->require_params(["id", "after_id"]);
 
 $id = $_POST["id"];
