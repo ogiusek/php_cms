@@ -3,49 +3,57 @@ $component = \component(__DIR__)
   ->css_file("header.css")
   ->js_file("header.js");
 
-$frontend_dropdown = \components()->get_instance("dropdown")
-  ->setText("Frontend")
-  ->setChildren([
-    \components()->get_instance("dropdown")
-      ->setText("Pages")
-      ->setLink("/admin/frontend/pages"),
-      \components()->get_instance("dropdown")
-      ->setText("Components")
-      ->setLink("/admin/frontend/components"),
-      \components()->get_instance("dropdown")
-      ->setText("Colors")
-      ->setLink("/admin/frontend/colors")
+$frontend_dropdown = \components()->get_instance("button")
+  ->set_text("Frontend")
+  ->set_type("dropdown", [
+    "children" => [
+      \components()->get_instance("button")
+        ->set_text("Pages")
+        ->set_type("link", [ "href" => "/admin/frontend/pages" ]),
+      \components()->get_instance("button")
+        ->set_text("Components")
+        ->set_type("link", [ "href" => "/admin/frontend/components" ]),
+      \components()->get_instance("button")
+        ->set_text("Colors")
+        ->set_type("link", [ "href" => "/admin/frontend/colors" ])
+    ]
   ]);
 
-$backend_dropdown = \components()->get_instance("dropdown")
-  ->setText("Backend")
-  ->setChildren([
-    \components()->get_instance("dropdown")
-      ->setText("Posts(empty)")
-      ->setLink("/admin/backend/posts"),
-      \components()->get_instance("dropdown")
-      ->setText("Emails(empty)")
-      ->setLink("/admin/backend/emails")
+$backend_dropdown = \components()->get_instance("button")
+  ->set_text("Backend")
+  ->set_type("dropdown", [
+    "children" => [
+      \components()->get_instance("button")
+        ->set_text("Posts(empty)")
+        ->set_type("link", [ "href" => "/admin/backend/posts" ]),
+      \components()->get_instance("button")
+        ->set_text("Emails(empty)")
+        ->set_type("link", [ "href" => "/admin/backend/emails" ])
+    ]
   ]);
 
-$settings_dropdown = \components()->get_instance("dropdown")
-  ->setText("CMS")
-  ->setChildren([
-    \components()->get_instance("dropdown")
-      ->setText("Files")
-      ->setLink("/admin/cms/files"),
-    \components()->get_instance("dropdown")
-      ->setText("Users(empty)")
-      ->setLink("/admin/cms/users"),
-    \components()->get_instance("dropdown")
-      ->setText("Test(empty)")
-      ->setChildrenPos(["vertical" => "start", "horizontal" => "start", "bottom" => "100%", "left" => "100%"])
-      ->setChildren([
-        \components()->get_instance("dropdown")
-          ->setText("Test")
-          ->setLink("/admin/settings/test")
-      ])
+$settings_dropdown = \components()->get_instance("button")
+  ->set_text("CMS")
+  ->set_type("dropdown", [
+    "children" => [
+      \components()->get_instance("button")
+        ->set_text("Files")
+        ->set_type("link", [ "href" => "/admin/cms/files" ]),
+      \components()->get_instance("button")
+        ->set_text("Users(empty)")
+        ->set_type("link", [ "href" => "/admin/cms/users" ]),
+      \components()->get_instance("button")
+        ->set_text("Test(empty)")
+        ->set_type("dropdown", [
+          "children" => [
+            \components()->get_instance("button")
+              ->set_text("Test")
+              ->set_type("link", [ "href" => "/admin/settings/test" ])
+          ]
+        ])
+      ]
   ]);
+
 ?>
 
 <header class="<?=$component->identifiers()?>">
