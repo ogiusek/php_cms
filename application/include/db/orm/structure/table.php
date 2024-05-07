@@ -20,7 +20,7 @@ class ITable {
     }, $this->columns);
     $query .= implode(", ", $columns);
     $query .= ");";
-    \db\modify($query);
+    \db\query($query);
     return $this;
   }
 
@@ -54,7 +54,7 @@ class ITable {
       if(!in_array($column->create_query(), $actual_table_as_query))
       return false;
     }
-    echo "2";
+
     return true;
   }
 
@@ -81,13 +81,13 @@ class ITable {
       $query .= $column->create_query();
       if($already_exists && $column->column_key === "" && $actual_table[$column_index]["COLUMN_KEY"] !== "")
         $query .= ", DROP KEY `".$column->name."`";
-      \db\modify($query);
+      \db\query($query);
     }
     // remove not present columns in table definition
     foreach ($actual_table as $column) {
       if(!in_array($column["COLUMN_NAME"], array_map(function($column) { return $column->name; }, $this->columns))){
         $query = "ALTER TABLE `".$this->table_name."` DROP COLUMN `".$column["COLUMN_NAME"]."`;";
-        \db\modify($query);
+        \db\query($query);
       }
     }
     return $this;
