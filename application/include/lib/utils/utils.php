@@ -25,12 +25,12 @@ function get_class_of_serialized(string $serialized){
   return $class_name;
 }
 
-function remove_shared_part_of_string(string $string1, string $string2){
-  $len1 = strlen($string1);
-  $len2 = strlen($string2);
+function remove_shared_part_of_string(string $formated_string, string $shared_string){
+  $len1 = strlen($formated_string);
+  $len2 = strlen($shared_string);
   $i = 0;
-  while ($i < $len1 && $i < $len2 && $string1[$i] === $string2[$i]) { $i++; }
-  return substr($string1, $i);
+  while ($i < $len1 && $i < $len2 && $formated_string[$i] === $shared_string[$i]) { $i++; }
+  return substr($formated_string, $i);
 }
 
 function ceasar_cipher(string $string, int $key) {
@@ -48,4 +48,22 @@ function ceasar_cipher(string $string, int $key) {
     $result .= $char;
   }
   return $result;
+}
+
+function format_link(string $link) {
+  $link = strtolower($link);
+  // turn spaces and _ into -
+  // remove special characters
+  $link = preg_replace('/[\s_]/', '-', $link);
+  $link = preg_replace('/[^a-zA-Z0-9\-\/.*]/', '', $link);
+  // remove - at the beginning and at the end
+  // remove double -
+  $link = implode('/', array_map(function ($link) { return trim($link, '-'); }, explode('/', $link)));
+  while (strpos($link, '--') !== false)
+    $link = str_replace('--', '-', $link);
+  // sort / characters
+  // remove - at the beginning and at the end
+  $link = trim($link, '/');
+  $link = "/$link";
+  return $link;
 }
