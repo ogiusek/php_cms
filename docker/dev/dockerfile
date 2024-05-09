@@ -1,8 +1,6 @@
 FROM php:8.2-cli
 
-WORKDIR /
-
-COPY . .
+WORKDIR /app
 
 EXPOSE 80
 

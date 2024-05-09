@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  front:
+    build:
+      context: ${PWD}
+      dockerfile: docker/deploy/dockerfile
+    ports:
+      - "${PORT}:80"
+    depends_on:
+      - db
+    environment:
+      - ENABLE_ADMIN=true
+      - DEBUG=true
+      - LOAD_DEFAULT_DATABASE_CONFIG=true
+
+      - DB_ADDRESS=db:3306
+      - DB_DATABASE=cms
+      - DB_USER=cms
+      - DB_PASSWORD=cms
+
+      - ROOT_EMAIL=root@gmail.com
+      - ROOT_PASSWORD=root
+  db:
+    image: mysql:8.0.27
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=cms
+      - MYSQL_USER=cms
+      - MYSQL_PASSWORD=cms
+      - MYSQL_PORT=3306
