@@ -4,6 +4,7 @@
 PHP CMS is a lightweight, easy-to-use content management system built with PHP. It is designed for small to medium-sized websites and allows users to easily manage and update their website content without any technical knowledge.
 
 ## First run
+### without docker
 - git clone last stable version
 - Rename `env.php.copy` to `env.php` and fill your database credentials
 - To add first user follow instructions in `/index.php`
@@ -12,6 +13,15 @@ PHP CMS is a lightweight, easy-to-use content management system built with PHP. 
 - If admin panel is not showing or styles are messed up check your php version (8.2 is minimum)
 - I hope you will be able to act on your own from now on
 - (: good luck
+
+### with docker
+- git pull last stable version
+- select version from versions and unzip.
+- use dockerfile from zip or from repo (if do not exists).
+- run `PORT=80 docker compose -f docker/dev/docker-compose.yml up`
+- enter localhost:80
+- login and password is in docker-compose.yml
+- enter components auto load them and you can play with them in pages direcotry
 
 ## Components
 ### how add component step by step
