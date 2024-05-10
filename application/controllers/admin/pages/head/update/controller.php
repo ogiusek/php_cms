@@ -6,8 +6,10 @@
 
 $head = (new \head\IHead())
   ->description($_POST['description'])
-  ->icon($_POST['icon'])
-  ->image($_POST['image'])
+  // ->icon($_POST['icon'])
+  ->icon(\components()->form_handler("image", $_POST['icon'])->get_src())
+  // ->image($_POST['image'])
+  ->image(\components()->form_handler("image", $_POST['image'])->get_src())
   ->keywords($_POST['keywords'])
   ->title($_POST['title']);
 $head = new \db\pages\head\IHead($head, $_POST['color_palette']);
