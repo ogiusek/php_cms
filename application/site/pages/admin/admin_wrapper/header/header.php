@@ -53,7 +53,6 @@ $settings_dropdown = \components()->get_instance("button")
         ])
       ]
   ]);
-
 ?>
 
 <header class="<?=$component->identifiers()?>">
@@ -61,13 +60,13 @@ $settings_dropdown = \components()->get_instance("button")
     <ul class="row top">
       <li>
         <a class="logo" href="/admin" aria-label="logo" style="height: 1.5rem;">
-          <?=\components()->render(\components()->get_instance("image")->set_src("/img/icons/logo.svg"))?>
+          <?=\components()->render(\components()->get_instance("image")->set_src("/img/icons/logo.svg")->set_alt("logo"))?>
         </a>
       </li>
       <li><a class="title" href="/admin" aria-label="title">cms</a></li>
       <li>
         <a class="logout" href="/admin/login" aria-label="logout" style="height: 1.5rem;">
-          <?=\components()->render(\components()->get_instance("image")->set_src("/img/icons/logout.svg"))?>
+          <?=\components()->render(\components()->get_instance("image")->set_src("/img/icons/logout.svg")->set_alt("logout"))?>
         </a>
       </li>
     </ul>
