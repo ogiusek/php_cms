@@ -40,12 +40,12 @@ function route_do_not_exists() {
   exit();
 }
 
-$GLOBALS['route'] = $route;
-$GLOBALS['route_file'] = $matched_routes[0]['file']?? route_do_not_exists();
-$GLOBALS['page_id'] = $matched_routes[0]['id']?? route_do_not_exists();
+$_SESSION['route'] = $route;
+$_SESSION['route_file'] = $matched_routes[0]['file']?? route_do_not_exists();
+$_SESSION['page_id'] = $matched_routes[0]['id']?? route_do_not_exists();
 
 function load_head(){
-  $page_id = $GLOBALS['page_id'];
+  $page_id = $_SESSION['page_id'];
   $content = \db\pages\head\get_by_page_id($page_id);
   $content->head->echo();
   $colors = $content->get_colors()->colors;
@@ -57,7 +57,7 @@ function load_head(){
 
 function display_page() {
   ob_start();
-  require $GLOBALS['route_file'];
+  require $_SESSION['route_file'];
   load_head();
   return ob_get_clean();
 }
