@@ -1,0 +1,5 @@
+:wrap(h1){
+  color: var(--color-text-primary);
+  font-size: 3rem;
+  font-weight: 600;
+}
