@@ -15,7 +15,8 @@ mysqli_set_charset($db, "utf8");
 $GLOBALS["db"] = &$db;
 
 require_once "basic_functions.php";
+require_once "orm/orm.php";
 require_once "functions/include.php";
 
-if($_ENV["LOAD_DEFAULT_DATABASE_CONFIG"])
-  require_once "init.tables.php";
+// load tables
+require_once "init.tables.php";
