@@ -15,16 +15,16 @@ class IColor {
 
 function add(string $name) {
   $default_colors = new \colors\IColors();
-  return \db\modify("INSERT INTO `color_paletts` (`name`, `colors`) VALUES (?, ?)", [$name, serialize($default_colors)]);
+  return \db\query("INSERT INTO `color_paletts` (`name`, `colors`) VALUES (?, ?)", [$name, serialize($default_colors)]);
 }
 
 function delete(int $id) {
-  return \db\modify("DELETE FROM `color_paletts` WHERE `id` = ?", [$id]);
+  return \db\query("DELETE FROM `color_paletts` WHERE `id` = ?", [$id]);
 }
 
 function edit(int $id, string $name, array $colors) {
   $colors = new \colors\IColors($colors);
-  return \db\modify("UPDATE `color_paletts` SET `name` = ?, `colors` = ? WHERE `id` = ?", [$name, serialize($colors), $id]);
+  return \db\query("UPDATE `color_paletts` SET `name` = ?, `colors` = ? WHERE `id` = ?", [$name, serialize($colors), $id]);
 }
 
 function get() {
@@ -42,5 +42,11 @@ function get_by_id(int $id) {
     $row = new \db\colors\IColor($row['id'], $row['name'], unserialize($row['colors']));
     return $row;
   }, $result);
+  return $result;
+}
+
+function get_by_page_id(int $page_id) {
+  $head = \db\pages\head\get_by_page_id($page_id);
+  $result = $head->get_colors();
   return $result;
 }
