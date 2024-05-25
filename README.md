@@ -37,7 +37,7 @@ class $component_name{
 };
 ```
 
-`renderer.php`
+`render.php`
 ```php
 <?php
 $content = \components()->get_content();
@@ -45,7 +45,7 @@ $content = \components()->get_content();
 <h2><?=$content->example_variable?></h2>
 ```
 
-`admin/renderer.php`
+`admin/render.php`
 ```php
 <?php
 $content = \components()->get_content();
@@ -95,7 +95,7 @@ if(is_numeric($a) && is_numeric($b)){
 }
 ```
 
-`/script.js` (remember to include script in `renderer.php` with `\component(__DIR__)->js_file("script.js")`)
+`/script.js` (remember to include script in `render.php` with `\component(__DIR__)->js_file("script.js")`)
 ```js
 fetch_controller("component_name", "example_route", {
    a: 1,
