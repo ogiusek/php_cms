@@ -3,8 +3,8 @@ namespace db\sessions;
 
 function remove(int $user_id) {
   // remove outdated sessions
-  // \db\modify("DELETE FROM `users_sessions` WHERE `user_id` = ? AND `session_start` < NOW() - INTERVAL 48 HOUR", [$user_id]);
-  return \db\modify("DELETE FROM `users_sessions` WHERE `user_id` = ?", [$user_id]);
+  // \db\query("DELETE FROM `users_sessions` WHERE `user_id` = ? AND `session_start` < NOW() - INTERVAL 48 HOUR", [$user_id]);
+  return \db\query("DELETE FROM `users_sessions` WHERE `user_id` = ?", [$user_id]);
 }
 
 function select(int $user_id) {
@@ -17,7 +17,7 @@ function select(int $user_id) {
 }
 
 function create(int $user_id) {
-  \db\modify("INSERT INTO `users_sessions` (`user_id`) VALUES (?)", [$user_id]);
+  \db\query("INSERT INTO `users_sessions` (`user_id`) VALUES (?)", [$user_id]);
   $uuid = select($user_id);
   return $uuid;
 }
