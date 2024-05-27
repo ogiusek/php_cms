@@ -1,16 +1,25 @@
 <?php
 namespace db\components;
 
-function add(string $class_name) {
-  return \db\modify("INSERT INTO `components` (`class_name`) VALUES (?)", [$class_name]);
+function autoload() {
+  // delete();
+  $elements = \components()->list_components();
+  foreach($elements as $element) {
+    add($element);
+  }
 }
 
-function delete(int $id) {
-  return \db\modify("DELETE FROM `components` WHERE `id` = ?", [$id]);
+function add(string $class_name) {
+  return \db\query("INSERT INTO `components` (`class_name`) VALUES (?)", [$class_name]);
+}
+
+function delete(int $id = -1) {
+  if ($id == -1) return \db\query("DELETE FROM `components`");
+  return \db\query("DELETE FROM `components` WHERE `id` = ?", [$id]);
 }
 
 function edit(int $id, string $class_name) {
-  return \db\modify("UPDATE `components` SET `class_name` = ? WHERE `id` = ?", [$class_name, $id]);
+  return \db\query("UPDATE `components` SET `class_name` = ? WHERE `id` = ?", [$class_name, $id]);
 }
 
 function get() {
