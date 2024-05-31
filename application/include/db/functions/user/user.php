@@ -14,5 +14,5 @@ function login(string $email, string $password) {
 function create_account(string $email, string $password) {
   $email = strtolower($email);
   $hash = hash("sha256", $password);
-  return \db\modify("INSERT INTO `users` (`email`, `hash`) VALUES (?, ?)", [$email, $hash]);
+  return \db\query("INSERT INTO `users` (`email`, `hash`) VALUES (?, ?)", [$email, $hash]);
 }
