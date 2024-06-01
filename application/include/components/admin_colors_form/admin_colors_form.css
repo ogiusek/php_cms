@@ -1,0 +1,88 @@
+:wrap(.edit-form){
+  margin: 2rem 0;
+  width: 100%;
+  padding: 1.5rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border-primary);
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+:wrap(h3){
+  margin: 0;
+  margin-right: auto;
+}
+
+:wrap(.edit-form .button){
+  margin-left: auto;
+  margin-top: auto;
+  max-width: 100%;
+  width: min-content;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: end;
+}
+
+:wrap(.edit-form .button button){
+  max-width: 100%;
+}
+
+:wrap(.colors){
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+:wrap(.color){
+  width: 200px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 0.5rem;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem; 
+}
+
+:wrap(.color label){
+  
+  font-size: 1rem;
+  font-weight: 900;
+  margin: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 1rem;
+  overflow: hidden;
+  box-sizing: content-box;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+:wrap(.color input){
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  opacity: 0;
+}
