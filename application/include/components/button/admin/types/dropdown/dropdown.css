@@ -1,0 +1,21 @@
+#id .li{
+  border: 1px solid var(--color-border-primary);
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+#id .li:not(.show)>.content{
+  display: none;
+}
+
+#id .buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#id .toggle{
+  outline: 1px solid var(--color-info);
+}

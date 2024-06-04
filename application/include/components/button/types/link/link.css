@@ -1,0 +1,17 @@
+#id{
+  transition: var(--transition);
+  margin-top: 0.25rem!important;
+  margin-bottom: 0.25rem!important;
+}
+
+#id:hover{
+  opacity: .6;
+}
+
+#id, 
+#id *{
+  margin: 0;
+  text-wrap: nowrap;
+  font-weight: 900;
+  font-size: 1rem;
+}

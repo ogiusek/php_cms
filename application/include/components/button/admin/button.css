@@ -1,0 +1,8 @@
+#id>.type>*>.types,
+:wrap(.types){
+  display: none;
+}
+
+#id>.type>*>.types.show{
+  display: block!important;
+}
