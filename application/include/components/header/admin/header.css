@@ -1,0 +1,15 @@
+:wrap([data-name="dropdown[]"]) {
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border-primary);
+  margin-bottom: 1rem;
+}
+
+:wrap(.hidden){
+  max-height: 0;
+  overflow-y: hidden;
+}
+
+:wrap(.toggle){
+  outline: 1px solid var(--color-info);
+}
