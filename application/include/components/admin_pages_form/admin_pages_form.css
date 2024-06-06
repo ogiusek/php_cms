@@ -1,0 +1,92 @@
+:wrap(.edit-page-form){
+  margin: 2rem 0;
+  width: 100%;
+  padding: 1.5rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border-primary);
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+:wrap(.row){
+  max-width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+:wrap(.button){
+  margin-top: auto;
+  max-width: 100%;
+  width: min-content;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: end;
+}
+
+:wrap(.button button){
+  max-width: 100%;
+}
+
+:wrap(.button .remove){
+  outline: 1px solid var(--color-error);
+}
+
+:wrap(.button .preview),
+:wrap(.button .content-btn){
+  outline: 1px solid var(--color-info);
+}
+
+:wrap(.button .edit) {
+  outline: 1px solid var(--color-success);
+}
+
+:wrap(.page-content){
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+:wrap(.page-content-editor){
+  transition: var(--transition);
+  overflow-y: hidden;
+  margin-top: -2rem;
+  max-height: 0px;
+  padding: 0;
+  
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: 0px solid var(--color-border-primary);
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+:wrap(.page-content-editor.open){
+  overflow: visible;
+  max-height: unset;
+  margin-top: -1rem;
+  padding: 1rem;
+
+  border-width: 1px;
+}
+
+@media screen and (max-width: 576px) {
+  :wrap(.edit-page-form),
+  :wrap(.page-content-editor.open) {
+    padding: 0.5rem;
+  }
+}
