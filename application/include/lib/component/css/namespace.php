@@ -3,16 +3,23 @@ namespace css;
 
 class ICSS {
   private string $css = "";
+  // private bool $is_shown = false;
 
   public function echo(): void {
+    // if($this->is_shown) return;
+    // $this->is_shown = true;
+    if($this->css == "") return;
     echo "<style>$this->css</style>";
+    $this->css = "";
   }
 
   private function wrap_selector(string $id, string $class, string $selector){
-    // .component.component-1 h2:not(.component-1 .component h2)
-    // return ".$class.$id $selector:not(.$id .$class $selector)"; // if someone knows why this works please let me know 
-    return ".$id *:not(.$class)>$selector,
-            .$id>$selector";
+    return ".$id $selector:not(.$id .$class:not(.$id) $selector)"; // idk this works
+    // but -> this can be better somethimes
+    // is there any ready solution for this ?
+    // css is the hardest programing language in the world
+    // return ".$id *:not(.$class)>$selector:not(.$class),
+    //         .$id>$selector:not(.$class)";
   }
 
   private function change_selectors(string $id, string $class){
@@ -39,6 +46,9 @@ class ICSS {
   }
 
   public function load_css_from_path($path): self {
+    static $paths = [];
+    if(isset($paths[$path])) return $this;
+    $paths[$path] = true;
     $this->load_css(file_get_contents($path));
     return $this;
   }
