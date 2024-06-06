@@ -4,6 +4,7 @@
   max-width: 100%;
   width: 25rem;
   min-height: 2rem;
+  height: max-content;
   box-sizing: border-box;
 
   display: flex;

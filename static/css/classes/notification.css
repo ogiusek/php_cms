@@ -12,7 +12,7 @@
   display: flex;
   justify-content: start;
   align-items: start;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .notification{
