@@ -48,18 +48,21 @@ function format_html(content){
   const element = document.createElement('div');
   element.innerHTML += content;
     
-  const move_to_head = (tag) => {
+  const move_to_head = (tag, refresh_duplicates = false) => {
     element.querySelectorAll(tag).forEach(element => {
       const script = document.createElement(tag);
       script.innerHTML = element.innerHTML;
       element.remove();
-      if(![...document.head.querySelectorAll(tag)].map(e=>e.innerHTML).includes(script.innerHTML))
+      const duplicates = [...document.head.querySelectorAll(tag)].filter(e=>e.innerHTML === script.innerHTML);
+      if(refresh_duplicates || duplicates.length === 0){
         document.head.appendChild(script);
+        duplicates.map(e => e.remove());
+      }
     });
   }
 
-  move_to_head('script');
   move_to_head('style');
+  move_to_head('script', true);
   return element.innerHTML;
 }
 

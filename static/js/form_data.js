@@ -16,7 +16,10 @@ function get_form_data(element){
     const get_value = () => {
       const types = ["input", "select", "textarea", "button"];
       if(!types.includes(e.tagName.toLocaleLowerCase())) return null;
-      if(e.getAttribute("type") === "checkbox")
+      if(e.tagName.toLocaleLowerCase() === "textarea" && e.classList.contains("rtf-textarea") && e.getAttribute("data-rtf-name"))
+        return CKEDITOR.instances[e.getAttribute("data-rtf-name")]?.getData();
+      const input_type = e.getAttribute("type");
+      if(input_type === "checkbox")
         return e.checked ? "1" : "0";
       return e.value;
     };
