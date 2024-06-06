@@ -15,7 +15,8 @@ function initialize_class_from_string(string $class_name){
   return $ref->newInstance();
 }
 
-function get_class_of_serialized(string $serialized){
+function get_class_of_serialized(mixed $serialized){
+  if(!is_string($serialized)) return get_class($serialized);
   $splitted = explode(":", $serialized);
   if(count($splitted) < 3) return "";
   $class_name_length = $splitted[1];
@@ -50,6 +51,14 @@ function ceasar_cipher(string $string, int $key) {
   return $result;
 }
 
+function image_to_datauri($file) {
+  if(!file_exists($file))
+    return "";
+  $encoded = base64_encode(file_get_contents($file));
+  $data_type = mime_content_type($file);
+  return "data:$data_type;base64,$encoded";
+}
+
 function format_link(string $link) {
   $link = strtolower($link);
   // turn spaces and _ into -
@@ -66,4 +75,17 @@ function format_link(string $link) {
   $link = trim($link, '/');
   $link = "/$link";
   return $link;
+}
+
+function array_flat(array $array) {
+  $result = [];
+  foreach ($array as $key => $value) {
+    if (is_array($value)) {
+      $result = array_merge($result, array_flat($value));
+    } else {
+      if(is_numeric($key)) $result[] = $value;
+      if(!is_numeric($key)) $result[$key] = $value;
+    }
+  }
+  return $result;
 }
