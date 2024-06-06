@@ -1,0 +1,36 @@
+#id{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+
+  border: 1px solid var(--color-border-primary);
+}
+
+:wrap(.icon){
+  width: 6rem;
+  height: 3rem;
+  margin-bottom: auto;
+}
+
+:wrap(.text){
+  max-width: calc(100% - 15rem);
+}
+
+#id .text p{
+  opacity: 0.7;
+}
+
+:wrap(.link){
+  margin-bottom: auto;
+  width: 6rem;
+  opacity: 0.7;
+}
+
+:wrap(.link a){
+  text-decoration: underline;
+}
