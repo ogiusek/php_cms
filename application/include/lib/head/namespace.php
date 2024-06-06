@@ -1,12 +1,19 @@
 <?php
 namespace head;
-
 class IHead {
 
   public function echo() {
     $head = "";
-    $head .= "<link rel=\"icon\" href=\"$this->icon\">";
-    $head .= "<meta property=\"og:image\" content=\"$this->image\">";
+    $icon_as_datauri = \image_to_datauri($_ENV["STATIC"].$this->icon);
+    if(!empty($icon_as_datauri)){
+      $head .= "<link rel=\"icon\" type=\"image/x-icon\" href=\"$icon_as_datauri\">";
+      $head .= "<link rel=\"icon\" href=\"$icon_as_datauri\">";
+      $head .= "<link rel=\"apple-touch-icon\" href=\"$icon_as_datauri\">";
+    }
+    $image_as_datauri = \image_to_datauri($_ENV["STATIC"].$this->image);
+    if(!empty($image_as_datauri)){
+      $head .= "<meta property=\"og:image\" content=\"$image_as_datauri\">";
+    }
     $head .= "<meta property=\"og:title\" content=\"$this->title\">";
     $head .= "<title>$this->title</title>";
     $head .= "<meta name=\"description\" content=\"$this->description\">";
