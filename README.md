@@ -5,33 +5,34 @@ PHP CMS is a lightweight, easy-to-use content management system built with PHP. 
 
 ## First run
 ### with docker(reccomended)
-- `git pull https://github.com/ogiusek/php_cms` 
-- unzip newest version from versions to empty directory
-- run `PORT=3000 docker compose -f docker/dev/docker-compose.yml up`
-- enter `localhost:3000/admin` login: `root@gmail.com` password: `root`
+- `git pull https://github.com/ogiusek/php_cms`
+- run `PORT=3000 docker compose -f docker/dev/docker-compose.yml up` or `PORT=3000 docker compose -f docker/deploy/docker-compose.yml up`
+- enter `localhost:3000` wait till database loads refresh 2 times and login: `root@gmail.com` password: `root` 
 - when you login go to `localhost:3000/admin/frontend/components` click autoload
 - now you can add pages and use components in `localhost:3000/admin/frontend/pages`
-- good luck (:
+- now you can create pages and edit their content
 
 ### without docker
-- git clone last stable version
+- required php version (8.2 is minimum)
+- `git pull https://github.com/ogiusek/php_cms`
 - Rename `env.php.copy` to `env.php` and fill your database credentials
-- To add first user follow instructions in `/index.php`
 - Now you can run project with `php -S localhost:3000` linux command
-- To enter admin open in browser `localhost:3000/admin`
-- If admin panel is not showing or styles are messed up check your php version (8.2 is minimum)
-- I hope you will be able to act on your own from now on
-- (: good luck
+- To enter admin open in browser `localhost:3000` refresh once
+- when you login go to `localhost:3000/admin/frontend/components` click autoload
+- now you can add pages and use components in `localhost:3000/admin/frontend/pages`
+- now you can create pages and edit their content
 
 ## Components
 ### how add component step by step
 create directory `/include/components/$component_name`\
-create 4 files inside `class.php`, `render.php`, `admin/render.php`, `admin/handler.php`
+create 4 files inside `class.php`, `render.php`, `admin/render.php`, `admin/handler.php`, `config.json`
 
 `class.php`
 ```php
 <?php
 namespace components;
+// if you use other component type here:
+// \components()->load_class("image"); // where instead of image you type required class
 class $component_name{
    public string $example_variable = "default value";
 };
@@ -41,16 +42,22 @@ class $component_name{
 ```php
 <?php
 $content = \components()->get_content();
+$component = \component(__DIR__) // <- optional
+  ->css_file("file.css") // <- optional
+  ->js_file("file.js"); // <- optional
 ?>
-<h2><?=$content->example_variable?></h2>
+<h2 class="<?=$component->identifiers()?>"><?=$content->example_variable?></h2>
 ```
 
 `admin/render.php`
 ```php
 <?php
 $content = \components()->get_content();
+$component = \component(__DIR__) // <- optional
+  ->css_file("file.css") // <- optional
+  ->js_file("file.js"); // <- optional
 ?>
-<div class="input">
+<div class="input <?=$component->identifiers()">
    <label for="input_name">example_variable value</label>
    <input type="text" data-name="input_name" aria-label="input_name" value="<?=$content->example_variable?>">
 </div>
@@ -65,9 +72,14 @@ $component->example_variable = $content['input_name'];
 return $component;
 ```
 
-To show component in admin go to `/admin/frontend/components`\
-And fill the form with `$component_name`\
-remember to replace `$component_name` with your component name (:
+`config.json`(optional)
+```json
+{
+  "autoload": true
+}
+```
+
+To show component in admin go to `/admin/frontend/components` and press auto_load
 
 Now to check is your component working you can try adding one in `/admin/frontend/pages`\
 Choose your page (i'll take '/'). Click button `content`. Add your element.\
