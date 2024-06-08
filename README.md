@@ -1,7 +1,7 @@
 ![logo](https://www.svgrepo.com/show/353613/craftcms.svg)
 # PHP CMS
 
-PHP CMS is a lightweight, easy-to-use content management system built with PHP. It is designed for small to medium-sized websites and allows users to easily manage and update their website content without any technical knowledge.
+PHP CMS is a lightweight, programmers friendly, easy-to-use content management system built with PHP. It is designed for small to medium-sized websites and allows users to easily manage and update their website content without any technical knowledge.
 
 ## First run
 ### with docker(reccomended)
@@ -21,6 +21,10 @@ PHP CMS is a lightweight, easy-to-use content management system built with PHP. 
 - when you login go to `localhost:3000/admin/frontend/components` click autoload
 - now you can add pages and use components in `localhost:3000/admin/frontend/pages`
 - now you can create pages and edit their content
+
+### how site looks ?
+example run and creating first page with docker
+![video is here](./readme/cms-first-run.webm)
 
 ## Components
 ### how add component step by step
