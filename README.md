@@ -24,7 +24,7 @@ PHP CMS is a lightweight, programmers friendly, easy-to-use content management s
 
 ### how site looks ?
 example run and creating first page with docker
-[![video preview](./readme/logo.svg)](./readme/cms-first-run.webm)
+[![video preview](./readme/play.svg)](./readme/cms-first-run.webm)
 
 ## Components
 ### how add component step by step
